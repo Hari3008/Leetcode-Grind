@@ -1,0 +1,40 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+
+        # Backtracking Approach - n! * n
+        self.res = []
+        self.backtrack(nums,0)
+        return self.res
+        
+    def backtrack(self,nums: List[int], idx:int):
+        # Base Case
+        if idx == len(nums):
+            self.res.append(nums.copy())
+            return
+        
+        for i in range(idx, len(nums)):
+            # Doing Swap 2 times to handle all possible positions of element in subset
+            nums[idx], nums[i] = nums[i], nums[idx]
+            self.backtrack(nums,idx+1)
+            nums[idx], nums[i] = nums[i], nums[idx]
+
+
+
+        # Recursive Approach - n! * n^2
+        # Base Case
+        # if len(nums) == 0:
+        #     return [[]]
+
+        # # Recurse from the next element of the list
+        # perm = self.permute(nums[1:])
+        # res = []
+
+        # # Iterate through the permutations, add the element in all positions of the permutation
+        # # for example, for a permutation - [1,2], we add 3, so the resulting perms are [[1,2,3],[1,3,2],[3,1,2]]
+        # for p in perm:
+        #     for i in range(len(p)+1):
+        #         pcopy = p.copy()
+        #         pcopy.insert(i,nums[0])
+        #         res.append(pcopy)
+        
+        # return res
