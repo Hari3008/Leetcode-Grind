@@ -7,7 +7,8 @@ class Solution:
         return self.res
         
     def backtrack(self,nums: List[int], idx:int):
-        # Base Case
+        
+# Base Case
         if idx == len(nums):
             self.res.append(nums.copy())
             return
